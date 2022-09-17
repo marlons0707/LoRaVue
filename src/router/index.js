@@ -39,27 +39,41 @@ const router = new VueRouter({
       },
     },
     {
-      path: '/devices',
-      name: 'devices',
-      component: () => import('@/views/Devices.vue'),
+      path: '/documentation',
+      name: 'documentation',
+      component: () => import('@/views/Documentation.vue'),
       meta: {
-        pageTitle: 'Dispositivos',
+        pageTitle: 'Documentación',
         breadcrumb: [
           {
-            text: 'Dispositivos',
+            text: 'Documentación',
             active: true,
           },
         ],
       },
     },
     {
-      path: '/login',
-      name: 'login',
-      component: () => import('@/views/Login.vue'),
+      path: '/autor',
+      name: 'autor',
+      component: () => import('@/views/Autor.vue'),
       meta: {
-        layout: 'full',
+        pageTitle: 'Desarrollador',
+        breadcrumb: [
+          {
+            text: 'Desarrollador',
+            active: true,
+          },
+        ],
       },
     },
+    // {
+    //   path: '/login',
+    //   name: 'login',
+    //   component: () => import('@/views/Login.vue'),
+    //   meta: {
+    //     layout: 'full',
+    //   },
+    // },
     {
       path: '/error-404',
       name: 'error-404',

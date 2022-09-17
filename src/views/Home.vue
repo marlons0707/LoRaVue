@@ -52,7 +52,7 @@
           _title="Temperatura"
         >
           <div class="text-center">
-            Actualizado el {{ currentTime() }}
+            Actualizado el {{ currentTimeVal }}
           </div>
           <chartjs-component-line-chart
             v-if="dataTemp.labels.length > 0"
@@ -79,7 +79,7 @@
           _title="Humedad"
         >
           <div class="text-center">
-            Actualizado el {{ currentTime() }}
+            Actualizado el {{ currentTimeVal }}
           </div>
           <chartjs-component-line-chart
             v-if="dataTemp.labels.length > 0"
@@ -203,12 +203,15 @@ export default {
 
       componentTempKey: 0,
       componentHumKey: 0,
+
+      currentTimeVal: '',
     }
   },
 
   beforeMount() {
     this.doorStatus()
     this.getAmbientData()
+    this.currentTime()
   },
 
   created() {
@@ -222,7 +225,8 @@ export default {
 
   methods: {
     currentTime() {
-      return moment().format('DD/MM/YYYY, h:mm:ss a')
+      this.currentTimeVal = moment().format('DD/MM/YYYY, h:mm:ss a')
+      return this.currentTimeVal
     },
     forceRerender() {
       this.componentTempKey += 1
@@ -242,6 +246,7 @@ export default {
       const intervalAmbientValue = setInterval(() => {
         this.getAmbientData()
         this.forceRerender()
+        this.currentTime()
       }, 30000)
       this.intervalAmbientValue = intervalAmbientValue
     },
@@ -253,12 +258,14 @@ export default {
           if (res.length > 0) {
             if (res[0].DOOR_OPEN_STATUS === 'OPEN') {
               this.bgDoorCard = 'danger'
-              this.timeDoorStatus = `Abierta el ${moment(res[0].TIME).format('DD/MM/YYYY, h:mm:ss a')}`
+              this.timeDoorStatus = `Abierta el ${res[0].TIME}`
+              // this.timeDoorStatus = `Abierta el ${moment(res[0].TIME).format('DD/MM/YYYY, h:mm:ss a')}`
             }
 
             if (res[0].DOOR_OPEN_STATUS === 'CLOSE') {
               this.bgDoorCard = 'success'
-              this.timeDoorStatus = `Cerrada el ${moment(res[0].TIME).format('DD/MM/YYYY, h:mm:ss a')}`
+              this.timeDoorStatus = `Cerrada el ${res[0].TIME}`
+              // this.timeDoorStatus = `Cerrada el ${moment(res[0].TIME).format('DD/MM/YYYY, h:mm:ss a')}`
             }
           }
         })

@@ -13,8 +13,13 @@ export default [
     icon: 'LayersIcon',
   },
   {
-    title: 'Dispositivos',
-    route: 'devices',
-    icon: 'SmartphoneIcon',
+    title: 'Documentación',
+    route: 'documentation',
+    icon: 'BookOpenIcon',
+  },
+  {
+    title: 'Desarrollador',
+    route: 'autor',
+    icon: 'UserIcon',
   },
 ]

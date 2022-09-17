@@ -1,15 +1,15 @@
 <template>
   <p class="clearfix mb-0">
-    <span class="float-md-left d-block d-md-inline-block mt-25">
-      Proyecto de graduación
+    <span class="float-md-right d-none d-md-block">
+      Ingeniería en Sistemas
       <b-link
         class="ml-25"
         href="#"
         target="_blank"
-      >Marlon Saravia</b-link>
+      >PG 2022</b-link>
     </span>
 
-    <span class="float-md-right d-none d-md-block">Universidad Mariano Gálvez
+    <span class="float-md-left d-block d-md-inline-block mt-25">Universidad Mariano Gálvez
       <feather-icon
         icon="BookIcon"
         size="21"
